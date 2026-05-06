@@ -1,24 +1,16 @@
 """
-Language Dynamical Equation (LDE) simulations for Old English -> Middle English.
+Symmetric Language Dynamical Equation — Old English to Middle English case study.
 
-v3 changes from v2:
-- No-contact counterfactual now runs strictly n=4 throughout all three phases.
-  When old_norse_fraction == 0.0, Phase 2 uses GRAMMARS_4 and the G5 column
-  is padded with NaN for output consistency. This prevents G5 from appearing
-  via the mutation term (a*u > 0) in a scenario where it should not exist.
-- Added plot_no_contact_vs_moderate_comparison(): two-panel figure for §6.3.
-- Rewrote __main__: uses Path(__file__) for relative output paths; generates
-  all seven manuscript figures in a single run.
+Implements the fully symmetric LDE from Mitchener (2003, J. Math. Biol. 46:265-285)
+under historically motivated three-phase scenarios:
+  Phase 1: four Old English dialect components at high learning fidelity.
+  Phase 2: Old Norse contact component introduced; learning fidelity reduced.
+  Phase 3: Old Norse removed; learning fidelity partially recovers.
 
-Unchanged from v2:
-- RHS make_symmetric_lde_rhs: no clipping or renormalization inside the vector field.
-- Mass conservation and positivity diagnostics.
-- All scenario parameter values match Table 2 of the manuscript.
-- rk4_convergence_check for appendix verification.
-- All other plotting functions.
+Run as a script to generate all figures into figures/.
 
-Author: Carlos Manuel Orrego Franco
-Code cleaned/restructured with AI assistance, May 2026.
+Author: Carlos Manuel Orrego Franco (Universidad Nacional de Colombia)
+        with AI assistance, May 2026.
 """
 
 from __future__ import annotations
@@ -738,9 +730,8 @@ if __name__ == "__main__":
 
     print(f"\nAll figures written to: {out_dir.resolve()}")
 
-    # --- Transient displacement integrals (manuscript Table 4) ---
+    # --- Transient displacement integrals ---
     print("\nTransient displacement integrals D_H and D_M2")
-    print("(copy values into Table tab:displacement-integrals in borrador_v6_master_internal_review.tex)")
     contact_scenarios = [
         ("canonical_mitchener_a05", "Canonical comparison"),
         ("conservative_contact",    "Conservative contact"),
