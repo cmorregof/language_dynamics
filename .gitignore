@@ -1,0 +1,26 @@
+# Python artifacts
+__pycache__/
+*.pyc
+
+# LaTeX outputs
+*.aux
+*.log
+*.pdf
+
+# Manuscript and audit material
+manuscript/
+audit/
+01_manuscript/
+06_audit/
+
+# Local workspace material outside the public release
+00_context/
+02_code/
+03_figures/
+04_sources_and_notes/
+05_prompts/
+07_track2_future/
+MANIFEST.md
+
+# OS/editor noise
+.DS_Store
