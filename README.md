@@ -1,47 +1,118 @@
 # Grammar Competition and Contact-Induced Instability in the Old-to-Middle English Transition
 
-*Carlos Manuel Orrego Franco — Universidad Nacional de Colombia, 2026*
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Simulation code for a computational case study applying Mitchener's (2003) fully symmetric language dynamical equation to the Old English → Middle English transition. Four Old English dialect components compete under replicator–mutator dynamics across three historical phases: pre-contact stability, a Scandinavian contact period with reduced learning fidelity, and post-contact consolidation. The scenarios are exploratory; the model is Mitchener's, not new.
+## Overview
+
+This repository contains reproducible simulation code and generated figures for:
+
+> **Grammar Competition and Contact-Induced Instability in the Old-to-Middle English Transition: A Computational Case Study Using the Symmetric Language Dynamical Equation**
+>
+> Carlos Manuel Orrego Franco
+>
+> *Computational case study, 2026*
+
+We implement Mitchener's (2003) fully symmetric language dynamical equation to explore how Scandinavian contact could have transiently destabilized competition among Old English grammatical varieties. The model has three historical phases: pre-contact competition among four Old English dialect components, a contact phase that introduces an Old Norse component, and a post-contact phase that returns to four components. The analysis is exploratory and methodological; it is not a causal claim about the Old-to-Middle English transition.
+
+- **Preprint**: to be added upon upload
+- **Paper DOI**: to be added upon publication
 
 ![No-contact vs moderate contact](figures/lde_comparison_nocontact_vs_moderate.png)
 
-*Left: four Old English dialects under constant high learning fidelity (no contact). Right: same system with Old Norse introduced during the contact phase. Both converge to the same near-uniform final state — contact produces a transient detour, not a shift in the long-run attractor.*
+## Scope
 
----
+This repository provides:
 
-## Reproduce the figures
+- the main simulation script;
+- seven generated PNG figures;
+- named exploratory parameter regimes;
+- transient displacement diagnostics `D_H` and `D_M2` printed by the script.
+
+It does **not** provide the manuscript source in this initial code release, and it does **not** establish a historical causal mechanism.
+
+## Repository Structure
+
+```text
+language_dynamics/
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── simulation.py
+└── figures/
+    ├── lde_comparison_nocontact_vs_moderate.png
+    ├── lde_heatmap_m2.png
+    ├── lde_moderate_diagnostics_entropy.png
+    ├── lde_moderate_diagnostics_m2.png
+    ├── lde_moderate_frequencies.png
+    ├── lde_scenario_entropy.png
+    └── lde_scenario_m2.png
+```
+
+## Reproducing the Figures
+
+### Requirements
+
+Python 3 with NumPy, SciPy, and Matplotlib.
 
 ```bash
 pip install -r requirements.txt
+```
+
+### Run the simulation
+
+```bash
 python3 simulation.py
 ```
 
-Writes seven PNG figures to `figures/` and prints diagnostics and displacement integrals to stdout. The parameter sweep (Fig. 7) takes ~30–60 s.
-
----
+The script writes all figures to `figures/` and prints numerical diagnostics to stdout. It uses SciPy's `RK45` integrator with `rtol=1e-10` and `atol=1e-12`.
 
 ## Scenarios
 
-`q₁ / q₂ / q₃` = learning fidelity in pre-contact / contact / post-contact phases.
-`a` = average cross-grammar intelligibility. `ON` = Old Norse fraction at contact onset.
+`q1 / q2 / q3` denote learning fidelity in the pre-contact, contact, and post-contact phases. `a` is average cross-grammar intelligibility. `ON fraction` is the Old Norse fraction introduced at contact onset.
 
-| Scenario | q₁ | q₂ | q₃ | a | ON |
+| Scenario | q1 | q2 | q3 | a | ON fraction |
 |---|---:|---:|---:|---:|---:|
 | Conservative contact | 0.90 | 0.75 | 0.85 | 0.80 | 0.15 |
-| Moderate contact     | 0.90 | 0.65 | 0.80 | 0.80 | 0.25 |
-| Strong contact       | 0.90 | 0.55 | 0.75 | 0.75 | 0.33 |
-| Canonical (*a* = 0.5)| 0.90 | 0.60 | 0.80 | 0.50 | 0.33 |
-| No contact (baseline)| 0.90 |  —   | 0.90 | 0.80 | 0.00 |
+| Moderate contact | 0.90 | 0.65 | 0.80 | 0.80 | 0.25 |
+| Strong contact | 0.90 | 0.55 | 0.75 | 0.75 | 1/3 |
+| Canonical Mitchener a=0.5 | 0.90 | 0.60 | 0.80 | 0.50 | 1/3 |
+| No-contact baseline | 0.90 | 0.90 | 0.90 | 0.80 | 0.00 |
 
-Initial OE weights (West Saxon / Mercian / Northumbrian / Kentish): 0.35 / 0.35 / 0.20 / 0.10 in all scenarios except strong contact (0.30 / 0.35 / 0.20 / 0.15). The no-contact baseline integrates strictly with *n* = 4 grammars throughout.
+Initial Old English weights are 0.35 / 0.35 / 0.20 / 0.10 for West Saxon, Mercian, Northumbrian, and Kentish in all scenarios except strong contact, which uses 0.30 / 0.35 / 0.20 / 0.15.
 
----
+## Citation
 
-## Cite
+If you use this code, please cite Mitchener's original model:
 
-> Mitchener, W. G. (2003). Bifurcation analysis of the fully symmetric language dynamical equation. *Journal of Mathematical Biology*, 46, 265–285. [doi:10.1007/s00285-002-0172-8](https://doi.org/10.1007/s00285-002-0172-8)
+```bibtex
+@article{mitchener2003bifurcation,
+  title   = {Bifurcation analysis of the fully symmetric language dynamical equation},
+  author  = {Mitchener, W. Garrett},
+  journal = {Journal of Mathematical Biology},
+  volume  = {46},
+  pages   = {265--285},
+  year    = {2003},
+  doi     = {10.1007/s00285-002-0172-8}
+}
+```
 
----
+Please also cite this repository if it supports your work:
 
-MIT © 2026 Carlos Manuel Orrego Franco
+```bibtex
+@misc{orrego2026grammarcompetition,
+  title  = {Grammar Competition and Contact-Induced Instability in the Old-to-Middle English Transition},
+  author = {Orrego Franco, Carlos Manuel},
+  year   = {2026},
+  note   = {Computational case study using the symmetric language dynamical equation}
+}
+```
+
+## License
+
+Code in this repository is released under the [MIT License](LICENSE).
+
+## Contact
+
+- Carlos Manuel Orrego Franco
+- Universidad Nacional de Colombia
+- [GitHub: @cmorregof](https://github.com/cmorregof)
