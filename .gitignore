@@ -5,12 +5,16 @@ __pycache__/
 # LaTeX outputs
 *.aux
 *.log
-*.pdf
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
 
 # Manuscript and audit material
-manuscript/
 audit/
-01_manuscript/
 06_audit/
 
 # Local workspace material outside the public release

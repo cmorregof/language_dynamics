@@ -8,7 +8,7 @@ This repository contains reproducible simulation code and generated figures for:
 
 > **Grammar Competition and Contact-Induced Instability in the Old-to-Middle English Transition: A Computational Case Study Using the Symmetric Language Dynamical Equation**
 >
-> Carlos Manuel Orrego Franco
+> Carlos Manuel Orrego Franco; Juan Carlos Riaño-Rojas
 >
 > *Computational case study, 2026*
 
@@ -25,10 +25,11 @@ This repository provides:
 
 - the main simulation script;
 - seven generated PNG figures;
+- the LaTeX manuscript source and compiled PDF;
 - named exploratory parameter regimes;
 - transient displacement diagnostics `D_H` and `D_M2` printed by the script.
 
-It does **not** provide the manuscript source in this initial code release, and it does **not** establish a historical causal mechanism.
+It does **not** establish a historical causal mechanism. The simulations are intended as an exploratory computational case study.
 
 ## Repository Structure
 
@@ -38,6 +39,9 @@ language_dynamics/
 ├── README.md
 ├── requirements.txt
 ├── simulation.py
+├── manuscript/
+│   ├── grammar_competition_oe_me_case_study.tex
+│   └── grammar_competition_oe_me_case_study.pdf
 └── figures/
     ├── lde_comparison_nocontact_vs_moderate.png
     ├── lde_heatmap_m2.png
@@ -65,6 +69,10 @@ python3 simulation.py
 ```
 
 The script writes all figures to `figures/` and prints numerical diagnostics to stdout. It uses SciPy's `RK45` integrator with `rtol=1e-10` and `atol=1e-12`.
+
+## Manuscript
+
+The manuscript source is available in `manuscript/grammar_competition_oe_me_case_study.tex`, with a compiled PDF at `manuscript/grammar_competition_oe_me_case_study.pdf`.
 
 ## Scenarios
 
@@ -101,7 +109,7 @@ Please also cite this repository if it supports your work:
 ```bibtex
 @misc{orrego2026grammarcompetition,
   title  = {Grammar Competition and Contact-Induced Instability in the Old-to-Middle English Transition},
-  author = {Orrego Franco, Carlos Manuel},
+  author = {Orrego Franco, Carlos Manuel and Ria{\~n}o-Rojas, Juan Carlos},
   year   = {2026},
   note   = {Computational case study using the symmetric language dynamical equation}
 }
@@ -114,5 +122,8 @@ Code in this repository is released under the [MIT License](LICENSE).
 ## Contact
 
 - Carlos Manuel Orrego Franco
+- ORCID: [0009-0001-9163-5137](https://orcid.org/0009-0001-9163-5137)
+- Juan Carlos Riaño-Rojas
+- ORCID: [0000-0002-5719-2854](https://orcid.org/0000-0002-5719-2854)
 - Universidad Nacional de Colombia
 - [GitHub: @cmorregof](https://github.com/cmorregof)
